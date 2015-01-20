@@ -50,9 +50,9 @@ class httpsmgr:
 		self.__headers = headers
 	
 	def __enter__(self):
-		self.__conn = httplib.HTTPSConnection(self.__baseurl)
+		self.__conn = httplib.HTTPSConnection(self.__baseurl,)
 		self.__conn.request('POST',self.__suburl,self.__postdata,self.__headers)
-		response = conn.getresponse()
+		response = self.__conn.getresponse()
 		return response
 	
 	def __exit__(self, mytype, myvalue, tb):

@@ -76,5 +76,5 @@ if __name__ == '__main__':
 	business.startWork1()
 	business.startWork2()
 	business.startWork3()
-	app.run(host='0.0.0.0', port=9898)
+	#app.run(host='0.0.0.0', port=9898)
 	
