@@ -41,3 +41,20 @@ class postmgr:
 	def __exit__(self, mytype, myvalue, tb):
 		if self.__httpclient:
 			self.__httpclient.close()
+			
+class httpsmgr:
+	def __init__(self,baseurl,suburl,postdata={},headers={}):
+		self.__baseurl = baseurl
+		self.__suburl = suburl
+		self.__postdata = postdata
+		self.__headers = headers
+	
+	def __enter__(self):
+		self.__conn = httplib.HTTPSConnection(self.__baseurl)
+		self.__conn.request('POST',self.__suburl,self.__postdata,self.__headers)
+		response = conn.getresponse()
+		return response
+	
+	def __exit__(self, mytype, myvalue, tb):
+		if self.__conn:
+			self.__conn.close()
